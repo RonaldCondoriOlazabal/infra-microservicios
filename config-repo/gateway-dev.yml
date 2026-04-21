@@ -14,6 +14,8 @@ spring:
           uri: lb://catalogo
           predicates:
             - Path=/catalogo/swagger-ui/**,/catalogo/v3/api-docs/**
+          filters:
+            - StripPrefix=1
         
         # PRODUCTO
         - id: producto-route
@@ -28,8 +30,71 @@ spring:
           uri: lb://producto
           predicates:
             - Path=/producto/swagger-ui/**,/producto/v3/api-docs/**
-        
-        #
+          filters:
+            - StripPrefix=1
+        # AUTH
+        - id: auth-route
+          uri: lb://auth
+          predicates:
+            - Path=/api/v1/usuarios/**
+        - id: auth-instancia
+          uri: lb://auth
+          predicates:
+            - Path=/api/v1/auth/instancia
+        - id: auth-swagger
+          uri: lb://auth
+          predicates:
+            - Path=/auth/swagger-ui/**,/auth/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+
+        # CANCHAS
+        - id: canchas-route
+          uri: lb://canchas
+          predicates:
+            - Path=/api/v1/canchas/**
+        - id: canchas-instancia
+          uri: lb://canchas
+          predicates:
+            - Path=/api/v1/canchas/instancia
+        - id: canchas-swagger
+          uri: lb://canchas
+          predicates:
+            - Path=/canchas/swagger-ui/**,/canchas/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+
+        # HORARIOS
+        - id: horarios-route
+          uri: lb://horarios
+          predicates:
+            - Path=/api/v1/horarios/**
+        - id: horarios-instancia
+          uri: lb://horarios
+          predicates:
+            - Path=/api/v1/horario/instancia
+        - id: horarios-swagger
+          uri: lb://horarios
+          predicates:
+            - Path=/horarios/swagger-ui/**,/horarios/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+
+        # RESERVAS
+        - id: reservas-route
+          uri: lb://reservas
+          predicates:
+            - Path=/api/v1/reservas/**
+        - id: reservas-instancia
+          uri: lb://reservas
+          predicates:
+            - Path=/api/v1/reserva/instancia
+        - id: reservas-swagger
+          uri: lb://reservas
+          predicates:
+            - Path=/reservas/swagger-ui/**,/reservas/v3/api-docs/**
+          filters:
+            - StripPrefix=1
 
 eureka:
   client:

@@ -11,5 +11,7 @@ spring:
         native: 
           #search-locations: file:///C:/ms1/ProyectosMS2026/infra/config-repo 
           #search-locations: file:/config-repo
-          search-locations: ${CONFIG_REPO_LOCATION:file:///C:/ms1/ProyectosMS2026/infra/config-repo}
+          # En Windows/Linux: permite override por variable de entorno.
+          # Por defecto, usa el config-repo del monorepo (relativo a este módulo).
+          search-locations: ${CONFIG_REPO_LOCATION:file:../config-repo}
 
